@@ -4,12 +4,7 @@ import reportWebVitals from "./reportWebVitals";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { Home } from "./pages/Home/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Cart from "./pages/Cart/Cart";
 import NotFound from "./pages/NotFound/NotFound";
 const router = createBrowserRouter([

@@ -17,13 +17,17 @@ export default function Categories() {
 
   return (
     <div className="categories">
-      <ul>
+      <ul className="categories__list">
         {categories.map((item, index) => {
           return (
             <li
               key={index}
               onClick={() => handleActive(index)}
-              className={active === index ? "active" : ""}
+              className={
+                active === index
+                  ? "active categories__item"
+                  : "categories__item"
+              }
             >
               {item}
             </li>

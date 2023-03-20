@@ -25,7 +25,7 @@ export function Home() {
         <Categories />
         <Sort />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">Все пиццы Мира</h2>
       <div className="content__items">
         {isLoading
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
