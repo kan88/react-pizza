@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 
-export default function Sort() {
+export default function Sort(props) {
   const [visible, setVisible] = useState(false);
-  const [filter, setFilter] = useState(0);
-  const sortItems = ["популярности", "цене", "алфавиту"];
+  const { sort, setSort } = props;
+
+  const sortItems = [
+    { name: "популярности DESC", sortProperty: "rating" },
+    { name: "популярности ASC", sortProperty: "-rating" },
+    { name: "цене DESC", sortProperty: "price" },
+    { name: "цене ASC", sortProperty: "-price" },
+    { name: "алфавиту DESC", sortProperty: "title" },
+    { name: "алфавиту ASC", sortProperty: "-title" },
+  ];
+
   const handleSort = (index) => {
-    setFilter(index);
+    setSort(sortItems[index]);
     setVisible(false);
   };
   return (
@@ -24,7 +33,7 @@ export default function Sort() {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setVisible(!visible)}>{sortItems[filter]}</span>
+        <span onClick={() => setVisible(!visible)}>{sort.name}</span>
       </div>
       {visible && (
         <div className="sort__popup">
@@ -32,13 +41,10 @@ export default function Sort() {
             {sortItems.map((item, index) => {
               return (
                 <li onClick={() => handleSort(index)} key={index}>
-                  {item}
+                  {item.name}
                 </li>
               );
             })}
-            {/* <li className="active">популярности</li>
-            <li>цене</li>
-            <li>алфавиту</li> */}
           </ul>
         </div>
       )}

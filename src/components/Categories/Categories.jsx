@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function Categories() {
-  const [active, setActive] = useState(0);
+export default function Categories(props) {
+  const { filter, setFilter } = props;
   const categories = [
     "Все",
     "Мясные",
@@ -10,9 +10,10 @@ export default function Categories() {
     "Острые",
     "Закрытые",
   ];
+  console.log(filter);
 
-  const handleActive = (num) => {
-    setActive(num);
+  const handleActive = (value) => {
+    setFilter(value);
   };
 
   return (
@@ -24,7 +25,7 @@ export default function Categories() {
               key={index}
               onClick={() => handleActive(index)}
               className={
-                active === index
+                filter === index
                   ? "active categories__item"
                   : "categories__item"
               }
