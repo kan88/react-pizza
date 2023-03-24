@@ -4,7 +4,8 @@ import PizzaItem from "../../components/PizzaItem/PizzaItem";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import Sort from "../../components/Sort/Sort";
 
-export function Home() {
+export function Home({ value }) {
+  console.log(value);
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [sort, setSort] = useState({
@@ -40,7 +41,11 @@ export function Home() {
       <div className="content__items">
         {isLoading
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
-          : pizzas.map((pizza, index) => <PizzaItem key={index} {...pizza} />)}
+          : pizzas
+              .filter((item) =>
+                item.title.toLowerCase().includes(value.toLowerCase())
+              )
+              .map((pizza, index) => <PizzaItem key={index} {...pizza} />)}
       </div>
     </>
   );

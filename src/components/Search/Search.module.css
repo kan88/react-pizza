@@ -1,0 +1,36 @@
+.search {
+    position: relative;
+}
+
+.search__input {
+    font-size: 18px;
+    padding: 10px 50px;
+    border: 2px solid gray;
+    border-radius: 36px;
+    min-width: 400px;
+}
+
+.search__input:hover {
+    cursor: pointer;
+    border: 2px solid rgb(164, 72, 72);
+}
+
+.search__icon {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    z-index: 1;
+    fill: gray;
+}
+
+.search__clear {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    fill: cadetblue;
+}
+
+.search__clear:hover {
+    fill: crimson;
+    cursor: pointer;
+}

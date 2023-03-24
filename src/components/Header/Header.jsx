@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/pizza-logo.svg";
+import Search from "../Search/Search";
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div className="header">
       <div className="container">
@@ -13,6 +14,7 @@ export default function Header() {
             <p>самая вкусная пицца во вселенной</p>
           </div>
         </Link>
+        <Search {...props} />
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>520 ₽</span>
