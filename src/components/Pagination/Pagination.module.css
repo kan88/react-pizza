@@ -1,0 +1,32 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 400px;
+}
+
+.pagination__item {
+    color: green;
+    border-radius: 10px;
+    border: 1px solid green;
+    padding: 10px 20px;
+}
+
+.pagination__item:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.pagination__active {
+    color: #ffffff;
+    background-color: green;
+}
+
+.pagination__array {
+    padding: 10px 20px;
+    color: blueviolet;
+}
+
+.pagination__array:hover {
+    cursor: pointer;
+}
