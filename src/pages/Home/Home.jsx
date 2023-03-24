@@ -5,7 +5,6 @@ import Skeleton from "../../components/Skeleton/Skeleton";
 import Sort from "../../components/Sort/Sort";
 
 export function Home({ value }) {
-  console.log(value);
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [sort, setSort] = useState({
@@ -17,11 +16,12 @@ export function Home({ value }) {
   const sortValue = sort.sortProperty.includes("-") ? "asc" : "desc";
   const sortFind = `sortBy=${sortName}&order=${sortValue}`;
   const filterFind = filter > 0 ? `category=${filter}&` : "";
+  const searchValue = value ? `&search=${value}` : "";
 
   const getPizzas = async () => {
     setLoading(true);
     const response = await fetch(
-      `https://64130d1db1ea744303210dcb.mockapi.io/api/pizzas?${filterFind}${sortFind}`
+      `https://64130d1db1ea744303210dcb.mockapi.io/api/pizzas?${filterFind}${sortFind}${searchValue}`
     );
     const pizzas = await response.json();
     setPizzas(pizzas);
@@ -30,7 +30,7 @@ export function Home({ value }) {
   useEffect(() => {
     getPizzas();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter, sort]);
+  }, [filter, sort, value]);
   return (
     <>
       <div className="content__top">
@@ -41,11 +41,7 @@ export function Home({ value }) {
       <div className="content__items">
         {isLoading
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
-          : pizzas
-              .filter((item) =>
-                item.title.toLowerCase().includes(value.toLowerCase())
-              )
-              .map((pizza, index) => <PizzaItem key={index} {...pizza} />)}
+          : pizzas.map((pizza, index) => <PizzaItem key={index} {...pizza} />)}
       </div>
     </>
   );
