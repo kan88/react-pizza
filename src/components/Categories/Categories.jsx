@@ -10,7 +10,6 @@ export default function Categories(props) {
     "Острые",
     "Закрытые",
   ];
-  console.log(filter);
 
   const handleActive = (value) => {
     setFilter(value);
