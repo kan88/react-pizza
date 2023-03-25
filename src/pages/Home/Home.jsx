@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { SearchContext } from "../../App";
 import Categories from "../../components/Categories/Categories";
 import Pagination from "../../components/Pagination/Pagination";
 import PizzaItem from "../../components/PizzaItem/PizzaItem";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import Sort from "../../components/Sort/Sort";
 
-export function Home({ value }) {
+export function Home() {
+  const { value } = useContext(SearchContext);
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [sort, setSort] = useState({
@@ -42,7 +44,7 @@ export function Home({ value }) {
       <h2 className="content__title">Все пиццы Мира</h2>
       <div className="content__items">
         {isLoading
-          ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
+          ? [...new Array(4)].map((_, index) => <Skeleton key={index} />)
           : pizzas.map((pizza, index) => <PizzaItem key={index} {...pizza} />)}
       </div>
       <div>
